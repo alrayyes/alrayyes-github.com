@@ -192,3 +192,4 @@ end
 
 activate :gzip
 activate :minify_html
+activate :asset_hash
