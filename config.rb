@@ -191,3 +191,4 @@ activate :deploy do |deploy|
 end
 
 activate :gzip
+activate :minify_html
