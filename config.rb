@@ -189,3 +189,5 @@ activate :deploy do |deploy|
   deploy.clean = true
   deploy.build_before = true
 end
+
+activate :gzip
