@@ -156,10 +156,10 @@ set :images_dir, 'images'
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
-  # activate :minify_css
+  activate :minify_css
   
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
   
   # Enable cache buster
   # activate :cache_buster
@@ -174,4 +174,18 @@ configure :build do
   
   # Or use a different image path
   # set :http_path, "/Content/images/"
+end
+
+activate :deploy do |deploy|
+  deploy.method = :rsync
+  # host and path *must* be set
+  deploy.host = "dev.andthensome.nl"
+  deploy.path = "/srv/www/dev/public/blog.dev.andthensome.nl/web"
+  # user is optional (no default)
+  deploy.user = "dev"
+  # port is optional (default is 22)
+  deploy.port  = 22222
+  # clean is optional (default is false)
+  deploy.clean = true
+  deploy.build_before = true
 end

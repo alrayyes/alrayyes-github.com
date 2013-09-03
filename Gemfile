@@ -7,3 +7,6 @@ gem "middleman-blog", "~> 3.2.0"
 gem "builder", "~> 3.0.0"
 
 gem "ruby18_source_location"
+gem "middleman-deploy"
+gem 'therubyracer' # faster JS compiles
+gem 'oj' # faster JS compiles
