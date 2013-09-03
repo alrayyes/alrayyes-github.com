@@ -1,0 +1,15 @@
+---
+pageable: true
+per_page: 12
+---
+<h1>Articles tagged '<%= tagname %>'</h1>
+
+<% page_articles.each_with_index do |article, i| %>
+    <%= partial "article_list_element", :locals => {:article => article, :with_tags => false} %>
+<% end %>
+
+<% if paginate %>
+  <div class="pagination pagination-centered">
+    <%= pagination_links %>
+  </div>
+<% end %>

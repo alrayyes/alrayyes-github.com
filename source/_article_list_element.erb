@@ -1,0 +1,14 @@
+<h1><%= link_to article.title, article %></h1>
+<%= article.body %>
+
+<div class="article-list-footer">
+  <span class="badge badge-success">Posted <%= article.date.strftime('%b %e %Y %H:%m') %></span>
+  <% if ((defined? with_tags) ? with_tags : true) %>
+    <div class="pull-right">
+      <% article.tags.each do |tag| %>
+        <%= link_to "<span class='label'>#{tag}</span>", tag_path(tag) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<hr>
