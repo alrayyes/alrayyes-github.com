@@ -11,3 +11,6 @@ gem "middleman-deploy"
 gem 'therubyracer' # faster JS compiles
 gem 'oj' # faster JS compiles
 gem 'middleman-minify-html'
+
+# Tidy html
+gem "rack-tidy", :git => "git://github.com/rbialek/rack-tidy.git"
