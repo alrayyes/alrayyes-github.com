@@ -193,7 +193,3 @@ end
 activate :gzip
 activate :minify_html
 activate :asset_hash
-
-# Tidy html
-require 'rack/tidy'
-use Rack::Tidy
