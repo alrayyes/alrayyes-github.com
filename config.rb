@@ -191,5 +191,5 @@ activate :deploy do |deploy|
 end
 
 activate :gzip
-activate :minify_html
+#activate :minify_html
 activate :asset_hash
