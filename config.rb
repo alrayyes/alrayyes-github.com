@@ -179,10 +179,10 @@ end
 activate :deploy do |deploy|
   deploy.method = :rsync
   # host and path *must* be set
-  deploy.host = "dev.andthensome.nl"
-  deploy.path = "/srv/www/dev/public/blog.dev.andthensome.nl/web"
+  deploy.host = "higherlearning.eu"
+  deploy.path = "/srv/www/higherlearning/html"
   # user is optional (no default)
-  deploy.user = "dev"
+  deploy.user = "higherlearning"
   # port is optional (default is 22)
   deploy.port  = 22222
   # clean is optional (default is false)
