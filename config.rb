@@ -193,3 +193,6 @@ end
 activate :gzip
 #activate :minify_html
 activate :asset_hash
+
+#Use haml
+set :haml, { :ugly => true, :format => :html5 }
