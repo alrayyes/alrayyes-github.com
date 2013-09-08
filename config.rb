@@ -174,6 +174,9 @@ configure :build do
   
   # Or use a different image path
   # set :http_path, "/Content/images/"
+
+  activate :gzip
+  activate :minify_html
 end
 
 activate :deploy do |deploy|
@@ -190,9 +193,8 @@ activate :deploy do |deploy|
   deploy.build_before = true
 end
 
-activate :gzip
-activate :minify_html
 activate :asset_hash
+activate :sprockets
 
 #Use haml
 set :haml, { :ugly => true, :format => :html5 }

@@ -15,13 +15,11 @@
     %meta{'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0'}
     %title Higher Learning
     = feed_tag 'Higher Learning Feed', 'feed.xml'
-    = stylesheet_link_tag 'bootstrap.min'
     :css
       body { padding-top: 50px; padding-bottom: 20px; }
-    = stylesheet_link_tag 'bootstrap-theme.min'
-    = stylesheet_link_tag 'main'
+    = javascript_include_tag 'top'
+    = stylesheet_link_tag 'all'
     = yield_content :assets
-    = javascript_include_tag 'vendor/modernizr-2.6.2-respond-1.1.0.min'
 
   %body
     /[if lt IE 7]
@@ -61,12 +59,9 @@
               %li
                 #{link_to year, blog_year_path(year)} (#{articles.size})
 
-    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'
+    = javascript_include_tag 'bottom'
     :javascript
       window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js')
-    = javascript_include_tag 'vendor/bootstrap.min'
-    = javascript_include_tag 'plugins'
-    = javascript_include_tag 'main'
 
     :javascript
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

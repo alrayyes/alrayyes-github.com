@@ -10,3 +10,4 @@ gem "middleman-deploy"
 gem 'therubyracer' # faster JS compiles
 gem 'oj' # faster JS compiles
 gem 'middleman-minify-html'
+gem 'sprockets', '~> 2.0'
