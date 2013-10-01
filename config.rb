@@ -124,7 +124,7 @@ helpers do
     # Combine the items with the prev/next links
     items = [first_link, prev_link, items, next_link, last_link].flatten
 
-    content_tag(:ul, items.join)
+    haml_tag(:ul, items.join)
   end
 
   def pagination_item_for(page)
