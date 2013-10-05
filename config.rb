@@ -17,6 +17,7 @@ activate :blog do |blog|
   # blog.day_link = ":year/:month/:day.html"
   # blog.default_extension = ".markdown"
 
+  blog.layout = "article.html.haml"
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
 
@@ -124,7 +125,7 @@ helpers do
     # Combine the items with the prev/next links
     items = [first_link, prev_link, items, next_link, last_link].flatten
 
-    haml_tag(:ul, items.join)
+    haml_tag(:ul, items.join, :class => 'pager')
   end
 
   def pagination_item_for(page)

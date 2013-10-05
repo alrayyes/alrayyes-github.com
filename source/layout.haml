@@ -13,10 +13,8 @@
     %meta{'charset' => 'utf-8'}
     %meta{'http-equiv' => 'X-UA-Compatible', 'content' => 'IE=edge;chrome=1'}
     %meta{'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0'}
-    %title Higher Learning
+    %title= yield_content(:title) ? "#{yield_content(:title)} - Higher Learning" : "Higher Learning"
     = feed_tag 'Higher Learning Feed', 'feed.xml'
-    :css
-      body { padding-top: 50px; padding-bottom: 20px; }
     = javascript_include_tag 'top'
     = stylesheet_link_tag 'all'
     = yield_content :assets
@@ -26,38 +24,45 @@
       %p{:class => "chromeframe"}
         Your are using an <strong>outdated</strong> browser. Please #{link_to 'upgrade your browser', 'http://browsehappy.com/'} or #{link_to 'activate Google Chrome Frame', "http://www.google.com/chromeframe/?redirect=true"} to improve your experience.
 
+    %nav{:class => ['navbar', 'navbar-inverse', 'navbar-fixed-top'], :role => 'navigation'}
+      %div{:class => "container"}
+        %div{:class => "navbar-header"}
+          %button{:type => 'button', :class => 'navbar-toggle', :data => {:toggle => 'collapse', :target => '.navbar-ex1-collapse'}}
+            %span{:class => 'sr-only'}
+              Toggle navigation
+            %span{:class => 'icon-bar'}
+            %span{:class => 'icon-bar'}
+            %span{:class => 'icon-bar'}
+          %a{:class => 'navbar-brand', :href => '/'} Higher Learning
+
+        / Collect the nav links, forms, and other content for toggling
+        %div{:class => ['collapse', 'navbar-collapse', 'navbar-ex1-collapse']}
+          %ul{:class => ['nav', 'navbar-nav']}
+            %li
+              %a{:href => '/about.html'} About
+            %li
+              %a{:href => '/feed.xml'} RSS
+
     %div{:class => "container"}
-      %div{:class => ['navbar', 'navbar-inverse', 'navbar-fixed-top']}
-        %div{:class => 'navbar-inner'}
-          %div{:class => 'container'}
-            = link_to('Higher Learning', '/', :class => 'brand')
-            = link_to('About', '/about.html', :class => 'brand')
-            = link_to('RSS', '/feed.xml', :class => 'brand')
 
       %div{:class => 'row'}
-        %div{:id => 'main', :role => 'main', :class => 'span8'}
+        %div{:class => 'col-lg-8'}
           = yield
 
-        %div{:class => 'span4'}
-          %h2 Recent Articles
-          %ol
-            - blog.articles[0...10].each do |article|
-              %li
-                =link_to article.title, article
-                %span 
-                  = article.date.strftime('%b %e')
+        %div{:class => 'col-lg-4'}
+          
+          %div{:class => 'well'}
+            %h4 Recent Articles
+            %div{:class => 'row'}
+              = partial 'recent_article_block', :locals => {:articles => blog.articles[1...5]}
+              = partial 'recent_article_block', :locals => {:articles => blog.articles[6...10]}
 
-          %h2 Tags
-          %ol
-            - blog.tags.each do |tag, articles|
-              %li
-                #{link_to tag, tag_path(tag)} (#{articles.size})
-
-          %h2 By Year
-          %ol
-            - blog.articles.group_by {|a| a.date.year }.each do |year, articles|
-              %li
-                #{link_to year, blog_year_path(year)} (#{articles.size})
+      %hr
+      %footer
+        %div{:class => 'row'}
+          %div{:class => 'col-lg-12'}
+            %p
+              Copyright &copy; Higher Learning 2013
 
     = javascript_include_tag 'bottom'
     :javascript

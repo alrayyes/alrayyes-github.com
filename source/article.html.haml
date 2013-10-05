@@ -1,0 +1,9 @@
+- wrap_layout :layout do
+- content_for(:title, current_article.title)
+  %h1  #{current_article.title}
+  %hr
+  %p
+    %span{:class => ['glyphicon', 'glyphicon-time']}
+    = partial 'posted_at', :locals => {:date => current_article.date}
+  %hr
+  = current_article.body

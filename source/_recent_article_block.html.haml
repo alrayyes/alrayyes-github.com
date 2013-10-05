@@ -1,0 +1,6 @@
+- if articles
+  %div{:class => 'col-lg-6'}
+    %ul{:class => 'list-unstyled'}
+      - articles.each do |article|
+        %li
+          %a{:href => article.url} #{article.title}
