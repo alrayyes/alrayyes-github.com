@@ -15,8 +15,8 @@
     %meta{'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0'}
     %title= yield_content(:title) ? "#{yield_content(:title)} - Higher Learning" : "Higher Learning"
     = feed_tag 'Higher Learning Feed', 'feed.xml'
-    = javascript_include_tag 'top'
-    = stylesheet_link_tag 'all'
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
     = yield_content :assets
 
   %body
