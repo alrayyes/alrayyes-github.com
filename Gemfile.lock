@@ -114,5 +114,4 @@ DEPENDENCIES
   middleman-deploy
   middleman-minify-html
   oj
-  sprockets (~> 2.0)
   therubyracer
