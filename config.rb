@@ -18,6 +18,7 @@ activate :blog do |blog|
   # blog.default_extension = ".markdown"
 
   blog.layout = "article.html.haml"
+  blog.sources = "articles/:year-:month-:day-:title.html"
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
 
