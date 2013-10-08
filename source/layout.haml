@@ -28,8 +28,7 @@
       %div{:class => "container"}
         %div{:class => "navbar-header"}
           %button{:type => 'button', :class => 'navbar-toggle', :data => {:toggle => 'collapse', :target => '.navbar-ex1-collapse'}}
-            %span{:class => 'sr-only'}
-              Toggle navigation
+            %span{:class => 'sr-only'} Toggle navigation
             %span{:class => 'icon-bar'}
             %span{:class => 'icon-bar'}
             %span{:class => 'icon-bar'}
@@ -64,12 +63,9 @@
             %p
               Copyright &copy; Higher Learning 2013
 
+    = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'
+    :javascript
+      window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')
     = javascript_include_tag 'bottom'
     :javascript
-      window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js')
-
-    :javascript
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0]; g.src='//www.google-analytics.com/ga.js'; s.parentNode.insertBefore(g,s)}(document,'script'));

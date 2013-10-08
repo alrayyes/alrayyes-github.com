@@ -1,3 +1,3 @@
-//= require "vendor/jquery-1.10.1.min"
+//= require "vendor/bootstrap/collapse"
 //= require "plugins"
 //= require "main"
