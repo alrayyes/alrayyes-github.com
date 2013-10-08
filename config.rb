@@ -17,7 +17,7 @@ activate :blog do |blog|
   # blog.day_link = ":year/:month/:day.html"
   # blog.default_extension = ".markdown"
 
-  blog.layout = "article.html.haml"
+  blog.layout = "article.html"
   blog.sources = "articles/:year-:month-:day-:title.html"
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
@@ -29,6 +29,8 @@ end
 
 page "/feed.xml", :layout => false
 page "/404.html", :layout => false
+
+ignore "article.html.haml"
 
 ### 
 # Compass
@@ -127,7 +129,7 @@ helpers do
     # Combine the items with the prev/next links
     items = [first_link, prev_link, items, next_link, last_link].flatten
 
-    haml_tag(:ul, items.join, :class => 'pager')
+    content_tag(:ul, items.join, :class => 'pager')
   end
 
   def pagination_item_for(page)
