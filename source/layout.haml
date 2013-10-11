@@ -38,6 +38,8 @@
         %div{:class => ['collapse', 'navbar-collapse', 'navbar-ex1-collapse']}
           %ul{:class => ['nav', 'navbar-nav']}
             %li
+              %a{:href => '/'} Home
+            %li
               %a{:href => '/about.html'} About
             %li
               %a{:href => '/feed.xml'} RSS
@@ -49,7 +51,17 @@
           = yield
 
         %div{:class => 'col-lg-4'}
-          
+
+          %form{:action => 'http://google.com/search', :method => 'get'}
+            %div{:class => 'well'}
+              %h4 Blog Search
+              %div{:class => 'input-group'}
+                %input{:type => 'hidden', :name => 'q', :value => 'site:higherlearning.eu'}
+                %input{:type => 'text', :class => 'form-control', :name => 'q', :results => 0, :placeholder => 'Search', :id => 'q'}
+                %span{:class => 'input-group-btn'}
+                  %button{:class => ['btn', 'btn-default'], :type => 'search'}
+                    %span{:class => ['glyphicon', 'glyphicon-search']}
+
           %div{:class => 'well'}
             %h4 Recent Articles
             %div{:class => 'row'}
