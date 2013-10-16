@@ -37,12 +37,10 @@
         / Collect the nav links, forms, and other content for toggling
         %div{:class => ['collapse', 'navbar-collapse', 'navbar-ex1-collapse']}
           %ul{:class => ['nav', 'navbar-nav']}
-            %li
+            %li{:class => ('active' if current_page.path == 'index.html')}
               %a{:href => '/'} Home
-            %li
+            %li{:class => ('active' if current_page.path == 'about.html')}
               %a{:href => '/about.html'} About
-            %li
-              %a{:href => '/feed.xml'} RSS
 
     %div{:class => "container"}
 
