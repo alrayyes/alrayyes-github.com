@@ -39,6 +39,8 @@
           %ul{:class => ['nav', 'navbar-nav']}
             %li{:class => ('active' if current_page.path == 'index.html')}
               %a{:href => '/'} Home
+            %li{:class => ('active' if current_page.path == 'archive.html')}
+              %a{:href => '/archive.html'} Archive
             %li{:class => ('active' if current_page.path == 'about.html')}
               %a{:href => '/about.html'} About
 
@@ -59,7 +61,7 @@
                 %span{:class => 'input-group-btn'}
                   %button{:class => ['btn', 'btn-default'], :type => 'search'}
                     %span{:class => ['glyphicon', 'glyphicon-search']}
-
+                      
           %div{:class => 'well'}
             %h4 Recent Articles
             %div{:class => 'row'}
@@ -74,8 +76,6 @@
               Copyright &copy; Higher Learning 2013
 
     = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'
-    :javascript
-      window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')
     = javascript_include_tag 'bottom'
     :javascript
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0]; g.src='//www.google-analytics.com/ga.js'; s.parentNode.insertBefore(g,s)}(document,'script'));
