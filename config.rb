@@ -184,20 +184,6 @@ configure :build do
   activate :minify_html
 end
 
-activate :deploy do |deploy|
-  deploy.method = :rsync
-  # host and path *must* be set
-  deploy.host = "higherlearning.eu"
-  deploy.path = "/srv/www/higherlearning/html"
-  # user is optional (no default)
-  deploy.user = "higherlearning"
-  # port is optional (default is 22)
-  deploy.port  = 22222
-  # clean is optional (default is false)
-  deploy.clean = true
-  deploy.build_before = true
-end
-
 activate :asset_hash
 activate :sprockets
 
