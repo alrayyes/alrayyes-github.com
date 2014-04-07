@@ -189,3 +189,6 @@ activate :sprockets
 
 #Use haml
 set :haml, { :ugly => true, :format => :html5 }
+
+#We want to livereload
+activate :livereload

@@ -9,3 +9,5 @@ gem "builder", "~> 3.0.0"
 gem 'therubyracer' # faster JS compiles
 gem 'oj' # faster JS compiles
 gem 'middleman-minify-html'
+
+gem "middleman-livereload", "~> 3.1.0"
