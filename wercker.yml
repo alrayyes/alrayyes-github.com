@@ -12,3 +12,4 @@ deploy :
     - lukevivier/gh-pages:
         token: $GIT_TOKEN
         basedir: build
+        domain: higherlearning.eu
