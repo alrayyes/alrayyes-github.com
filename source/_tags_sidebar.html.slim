@@ -1,0 +1,10 @@
+- current_tag ||= ''
+aside class="large-3 columns"
+	h5 Categories
+	ul class="side-nav"
+		- tags.sort.each_with_index do |tag|
+			li
+				- if current_tag == tag[0]
+					#{tag[0]}
+				- else
+					a href="#{tag_path tag[0]}" rel="tag" #{tag[0]}

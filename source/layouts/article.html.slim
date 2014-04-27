@@ -1,0 +1,12 @@
+= wrap_layout :layout do
+	- content_for(:title, current_article.title)
+
+	div class="large-9 columns" role="content"
+		article itemscope="" itemtype="http://schema.org/BlogPosting"
+			header
+	    		h2 itemprop="headline name": #{current_article.title}
+	    		h6
+	      			= partial 'posted_at', :locals => {:date => current_article.date}
+	    	div class="row"
+	      		div class="large-12 columns" itemprop="articleBody"
+	        		= current_article.body

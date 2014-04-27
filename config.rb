@@ -17,7 +17,7 @@ activate :blog do |blog|
   # blog.day_link = ":year/:month/:day.html"
   # blog.default_extension = ".markdown"
 
-  blog.layout = "article.html"
+  blog.layout = "article"
   blog.sources = "articles/:year-:month-:day-:title.html"
   blog.tag_template = "tag.html"
   blog.calendar_template = "calendar.html"
@@ -30,49 +30,51 @@ end
 page "/feed.xml", :layout => false
 page "/404.html", :layout => false
 
-ignore "article.html.haml"
-
-### 
+###
 # Compass
 ###
 
-# Susy grids in Compass
-# First: gem install susy
-# require 'susy'
+compass_config do |config|
+  # Require any additional compass plugins here.
+  config.add_import_path "bower_components/foundation/scss"
 
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
+  # Set this to the root of your project when deployed:
+  config.http_path = "/"
+  config.css_dir = "stylesheets"
+  config.sass_dir = "stylesheets"
+  config.images_dir = "images"
+  config.javascripts_dir = "javascripts"
 
-###
-# Page options, layouts, aliases and proxies
-###
+  # You can select your preferred output style here (can be overridden via the command line):
+  # output_style = :expanded or :nested or :compact or :compressed
 
-# Per-page layout changes:
-# 
-# With no layout
-# page "/path/to/file.html", :layout => false
-# 
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-# 
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
+  # To enable relative paths to assets via compass helper functions. Uncomment:
+  # relative_assets = true
 
-# Proxy (fake) files
-# page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
-#   @which_fake_page = "Rendering a fake page with a variable"
-# end
+  # To disable debugging comments that display the original location of your selectors. Uncomment:
+  # line_comments = false
+
+
+  # If you prefer the indented syntax, you might want to regenerate this
+  # project again passing --syntax sass, or you can uncomment this:
+  # preferred_syntax = :sass
+  # and then run:
+  # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+
+end
 
 ###
 # Helpers
 ###
 
 # Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
+activate :automatic_image_sizes
+
+# Reload the browser automatically whenever files change
+activate :livereload
+
+# Add syntax support
+activate :syntax, line_numbers: true
 
 # Methods defined in the helpers block are available in templates
 # helpers do
@@ -80,7 +82,6 @@ ignore "article.html.haml"
 #     "Helping"
 #   end
 # end
-
 helpers do
 
   def locals_for(page, key)
@@ -129,7 +130,7 @@ helpers do
     # Combine the items with the prev/next links
     items = [first_link, prev_link, items, next_link, last_link].flatten
 
-    content_tag(:ul, items.join, :class => 'pager')
+    content_tag(:ul, items.join, :class => 'pagination')
   end
 
   def pagination_item_for(page)
@@ -139,17 +140,27 @@ helpers do
 
   def pagination_item(link_title, link_path, options = {})
     if link_path == current_page.url
-      content = content_tag(:span, link_title)
-      options[:class] = "active"
+      options[:class] = "current"
     elsif link_path
-      content = link_to(link_title, link_path)
     else
-      content = content_tag(:span, link_title)
-      options[:class] = "disabled"
+      options[:class] = "unavailable"
     end
 
+    content = link_to(link_title, link_path)
     content_tag(:li, content, options)
   end
+end
+
+###
+# Gem
+###
+require 'slim'
+Slim::Engine.set_default_options pretty: true, sort_attrs: false
+
+# Add bower's directory to sprockets asset path
+after_configuration do
+  @bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
+  sprockets.append_path File.join "#{root}", @bower_config["directory"]
 end
 
 set :css_dir, 'stylesheets'
@@ -162,33 +173,20 @@ set :images_dir, 'images'
 configure :build do
   # For example, change the Compass output style for deployment
   activate :minify_css
-  
+
   # Minify Javascript on build
   activate :minify_javascript
-  
+
   # Enable cache buster
-  # activate :cache_buster
-  
+  activate :asset_hash
+
   # Use relative URLs
   # activate :relative_assets
-  
-  # Compress PNGs after build
-  # First: gem install middleman-smusher
-  # require "middleman-smusher"
-  # activate :smusher
-  
+
   # Or use a different image path
   # set :http_path, "/Content/images/"
 
   activate :gzip
   activate :minify_html
+  activate :asset_hash
 end
-
-activate :asset_hash
-activate :sprockets
-
-#Use haml
-set :haml, { :ugly => true, :format => :html5 }
-
-#We want to livereload
-activate :livereload

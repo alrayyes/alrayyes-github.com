@@ -1,0 +1,5 @@
+- content_for(:nav_title, "Archive")
+- content_for(:title, "Archive")
+
+= partial 'archive_articles.html', :locals => {:articles => page_articles}
+= partial 'tags_sidebar.html', :locals => {:tags => blog.tags}

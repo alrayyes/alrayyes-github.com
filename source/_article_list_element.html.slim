@@ -1,0 +1,9 @@
+article itemscope="" itemtype="http://schema.org/BlogPosting"
+	header
+		h3
+			a href=article.url title="#{article.title}" rel="bookmark" itemprop="url name headline" #{article.title}
+		h6
+			=partial 'posted_at', :locals => {:date => article.date}
+	div class="row"
+		div class="large-12 columns" itemprop="articleBody"
+			| #{article.body}
