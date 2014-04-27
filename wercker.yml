@@ -1,0 +1,15 @@
+box: wercker/ruby
+build:
+    steps:
+        # Execute the bundle install step, a step provided by wercker
+        - bundle-install
+        # Execute a custom script step.
+        - script:
+            name: middleman build
+            code: bundle exec middleman build --verbose
+deploy :
+  steps :
+    - lukevivier/gh-pages:
+        token: $GIT_TOKEN
+        basedir: build
+        domain: higherlearning.eu

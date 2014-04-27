@@ -1,0 +1,3 @@
+div class="large-9 columns" role="content"
+	- articles.each_with_index do |article, i|
+	  = partial 'article_archive_list_element.html', :locals => {:article => article}

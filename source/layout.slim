@@ -1,0 +1,83 @@
+doctype html
+html class="no-js" lang="en"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title ==yield_content(:title) ? "#{yield_content(:title)} - Higher Learning" : "Higher Learning"
+    link rel="author" href="https://plus.google.com/+RyanKes"
+    link rel="publisher" href="https://plus.google.com/+RyanKes"
+    == feed_tag 'Higher Learning Feed', 'feed.xml'
+    == stylesheet_link_tag('app', 'style')
+    == javascript_include_tag('modernizr')
+
+  body itemscope="" itemtype="http://schema.org/WebPage"
+
+    /! Nav Bar
+    div class="contain-to-grid sticky show-for-small-only"
+      nav class="top-bar" data-topbar="" role="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement"
+        ul class="title-area"
+          li class="name": h1: a href="/" Higher Learning
+          li class="toggle-topbar menu-icon": a href="/" Menu
+        section class="top-bar-section"
+          ul class="left hass-dropdown"
+            li class=('active' if current_page.path == 'index.html') itemprop="url"
+              a href="/" title="Home" itemprop="name" Home
+            li class=('active' if current_page.path == 'archive.html') itemprop="url"
+              a href="/archive.html" title="Archive" itemprop="name" Archive
+            li class=('active' if current_page.path == 'about.html') itemprop="url"
+              a href="/about.html" title="About" itemprop="name" About
+    /! End Nav
+
+    /! Start Header
+    header class="row show-for-medium-up" role="banner" itemscope="" itemtype="http://schema.org/WPHeader"
+      div class="large-12 columns"
+        div class="nav-bar right"
+          ul class="button-group"
+            li: a class="tiny button" href="/" Home
+            li: a class="tiny button" href="/archive.html" Archive
+            li: a class="tiny button" href="/about.html" About
+        h1
+          - if yield_content(:nav_title)
+            div itemprop="headline"
+              #{yield_content(:nav_title)}
+          - else
+            a itemprop="headline" href="/" Higher Learning
+            small  Make yourself comfortable
+        hr
+    /! End Header
+
+    /! Main Page Content and Sidebar
+    div class="row"
+      /! Main Blog Content
+      section id="content"
+        == yield
+      /! End Main Content
+    /! End Main Content and Sidebar
+
+    /! Footer
+    footer class="row" role="contentinfo" itemscope="" itemtype="http://schema.org/WPFooter"
+      div class="large-12 columns"
+        hr
+        div class="row"
+          div class="large-6 columns"
+            p
+              | Copyright &copy; Higher Learning #{Time.new.year}
+          div class="large-6 columns"
+            ul class="inline-list right"
+              li: a href="https://www.facebook.com/ryan.kes" class="webicon facebook" Facebook
+              li: a href="https://plus.google.com/+RyanKes" class="webicon googleplus" Google Plus
+              li: a href="https://twitter.com/alrayyes" class="webicon twitter" Twitter
+              li: a href="http://instagram.com/alrayyes" class="webicon instagram" Instagram
+              li: a href="http://www.last.fm/user/alrayyes" class="webicon lastfm" Last.fm
+              li: a href="https://github.com/alrayyes" class="webicon github" Github
+              li: a href="https://www.linkedin.com/pub/ryan-kes/54/144/729" class="webicon linkedin" Linkedin
+
+      = javascript_include_tag 'all'
+      javascript:
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-50437058-1', 'higherlearning.eu');
+        ga('send', 'pageview');

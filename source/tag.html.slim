@@ -1,0 +1,9 @@
+---
+pageable: false
+per_page: 12
+---
+- content_for(:nav_title, tagname)
+- content_for(:title, tagname)
+
+= partial 'archive_articles.html', :locals => {:articles => page_articles}
+= partial 'tags_sidebar.html', :locals => {:tags => blog.tags, :current_tag => tagname}

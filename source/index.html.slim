@@ -1,0 +1,14 @@
+---
+pageable: true
+per_page: 12
+---
+
+div class="large-9 columns small-centered"
+	- page_articles.each_with_index do |article, i|
+	  = partial 'article_list_element.html', :locals => {:article => article}
+	  - if article != page_articles.last
+	  	hr
+
+	- if paginate
+	  div class="pagination-centered"
+	  	= pagination_links
