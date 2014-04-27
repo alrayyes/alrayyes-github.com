@@ -16,3 +16,6 @@ gem "slim", "~> 2.0.2"
 
 # Enable syntax highlighting
 gem 'middleman-syntax', '~> 2.0.0'
+
+# Minify stuff
+gem 'middleman-minify-html', '~> 3.1.1'
