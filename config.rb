@@ -76,6 +76,11 @@ activate :livereload
 # Add syntax support
 activate :syntax, line_numbers: true
 
+# Add disqus
+activate :disqus do |d|
+  d.shortname = "higherlearningtheblog"
+end
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
