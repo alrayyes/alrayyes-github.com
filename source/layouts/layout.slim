@@ -3,11 +3,13 @@ html class="no-js" lang="en"
   head
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="twitter:site" content="@alrayyes"
+    meta name="description" content="This is my blog. There are many like it, but this one is mine."
     title ==yield_content(:title) ? "#{yield_content(:title)} - Higher Learning" : "Higher Learning"
-    link rel="author" href="https://plus.google.com/+RyanKes"
-    link rel="publisher" href="https://plus.google.com/+RyanKes"
+    link rel="author" href="https://plus.google.com/+RyanKes?rel=author"
+    link rel="canonical" href="http://www.higherlearning.eu"
     == feed_tag 'Higher Learning Feed', 'feed.xml'
-    == stylesheet_link_tag('app', 'style')
+    == stylesheet_link_tag('style')
     == javascript_include_tag('modernizr')
 
   body itemscope="" itemtype="http://schema.org/WebPage"
