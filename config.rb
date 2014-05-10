@@ -4,6 +4,9 @@
 
 Time.zone = "Europe/Amsterdam"
 
+ignore "wercker.yml"
+ignore "bower_components/*"
+
 activate :blog do |blog|
   # blog.prefix = "blog"
   # blog.permalink = ":year/:month/:day/:title.html"
