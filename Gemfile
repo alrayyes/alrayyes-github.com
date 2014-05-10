@@ -19,3 +19,7 @@ gem 'middleman-syntax', '~> 2.0.0'
 
 # Minify stuff
 gem 'middleman-minify-html', '~> 3.1.1'
+
+# Speed up js compilation
+gem 'therubyracer' # faster JS compiles
+gem 'oj' # faster JS compiles
