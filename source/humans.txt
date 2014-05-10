@@ -3,6 +3,8 @@
 /* humanstxt.org */
 
 /* SITE */
+  Doctype:HTML5
   Standards: HTML5, CSS3
   Components: jQuery, Modernizr, Foundation
-  Software: Sublime Text, Git
+  Software: Git, Middleman, Bower
+  IDE: Sublime Text
