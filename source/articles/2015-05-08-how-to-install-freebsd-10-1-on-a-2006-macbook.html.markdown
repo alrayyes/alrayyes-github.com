@@ -43,8 +43,8 @@ bless --device /dev/disk0s1 --setBoot --legacy
 
 * Reboot again and you should be rewarded with the FreeBSD boot screen:
 
-![FreeBSD boot screen](images/bsdinstall-newboot-loader-menu.png)
+![FreeBSD boot screen](/images/bsdinstall-newboot-loader-menu.png)
 
 Now pat yourself on the back for a job well done. You deserve it.
 
-![Pat yourself on the back](images/patontheback.gif)
+![Pat yourself on the back](/images/patontheback.gif)
