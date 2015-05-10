@@ -13,3 +13,7 @@ deploy :
         token: $GIT_TOKEN
         basedir: build
         domain: www.higherlearning.eu
+    - seigyo/cloudflare-purge:
+        api: $CLOUDFLARE_API_KEY
+        email: $CLOUDFLARE_EMAIL
+        domain: $CLOUDFLARE_DOMAIN
